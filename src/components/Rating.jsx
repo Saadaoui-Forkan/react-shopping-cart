@@ -6,11 +6,12 @@ const Rating = ({rating}) => {
         index += 1;
         return (
             <span key={index} className={index <= Math.round(rating) ? "on" : "off"}>
-                <i class="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
             </span>
         );
       })}
-    </div> );
+    </div> 
+    );
 }
  
 export default Rating

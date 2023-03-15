@@ -1,0 +1,71 @@
+.multi-filter {
+    background-color: #D88B6C;
+    width: 35vw;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    transform: translateX(-70vw);
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    padding-left: 10px;
+}
+.active-multi-filter {
+    transform: translateX(0);
+}
+
+h4.heading-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.categories, .gender {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    font-size: 20px;
+}
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 20px;
+}
+
+input[type="range"] {
+    width: 140px;
+    transform: translateX(20px);
+}
+
+.rates {
+    transform: translateX(20px);
+    font-size: 17px;
+}
+.rate {
+	cursor: pointer;
+}
+.filter-btn {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 80px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100px;
+    cursor: pointer;
+	background-color: #D35472;
+	color: #fff;
+}
+
+/* responsive */
+/* @media(max-width:991px) {
+	
+} */
+/* @media (max-width:767px) {
+	
+} */
+@media (min-width:270px) and (max-width:575px) {
+	.multi-filter {
+        top: 55px;
+        width: 70vw;
+    }
+}

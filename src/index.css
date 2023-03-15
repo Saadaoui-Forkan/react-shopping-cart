@@ -76,11 +76,15 @@ body {
     font-size: 30px;
     border-radius: 50%;
     cursor: pointer;
+	color: #B3CFEF;
+}
+.isLiked {
+	color: #D33F44;
 }
 /* header */
 .header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 	align-items: center;
     background: #fff;
     padding: 12px;
@@ -89,6 +93,7 @@ body {
     left: 0;
     width: 100%;
 	z-index: 100;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
 .header-left {
     cursor: pointer;
@@ -97,6 +102,8 @@ body {
 }
 .header-right {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .cart, .favorites {
     display: flex;
@@ -109,7 +116,32 @@ body {
 	border-radius: 9px;
 	border: 1px solid #000;
 }
-.header-right p {
+.cart {
+	margin: 5px;
+}
+input[type="search"] {
+    width: 250px;
+    border: 2px solid rgb(159, 40, 40);
+    padding: 8px 5px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+input[type="search"]:focus {
+	outline: none;
+}
+.favorites-products {
+	margin-left: 8px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+    color: rgb(159, 40, 40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	border: 1px solid #000;
+}
+.my-cart {
     margin-left: 8px;
     width: 30px;
     height: 30px;
@@ -120,6 +152,9 @@ body {
     align-items: center;
     justify-content: center;
 	border: 1px solid #000;
+}
+.burger {
+    display: none;
 }
 
 /* responsive */
@@ -146,7 +181,7 @@ body {
 		font-size: 20px;
 	}
 }
-@media (max-width:575px) {
+@media (min-width:270px) and (max-width:575px) {
 	.single-box {
 		width: 100%;
 		height: auto;
@@ -156,7 +191,27 @@ body {
 		height: auto;
 	}
 	.cart, .favorites {
-		margin: auto 5px;
+		margin: 5px;
 		padding: 2px;
+	}
+	.burger {
+		display: block;
+		font-size: 25px;
+		color: #000;
+		cursor: pointer;
+	}
+	.header-right {
+		display: none;
+	}
+	.active-navbar {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 53px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: #eee9e9;
+		width: 100%;
+		padding: 9px;
 	}
 }
