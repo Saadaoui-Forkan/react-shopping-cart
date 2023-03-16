@@ -3,7 +3,7 @@ import React from 'react'
 import Rating from './Rating'
 
 function ProductItem({item, toggleLike, liked, addToCart}) {
-  
+  // console.log(cartItems)
   return (
     <div className='box'>
         {
@@ -22,7 +22,7 @@ function ProductItem({item, toggleLike, liked, addToCart}) {
                 <Rating rating = {item.rating.rate}/>
                 <button 
                   type='button'
-                  onClick = {addToCart}
+                  onClick = {()=> addToCart(item)}
                 >
                   Add To Cart
                 </button>

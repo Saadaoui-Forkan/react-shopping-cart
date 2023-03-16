@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Cart from "./components/Cart";
 import MultiFilter from "./components/filter/MultiFilter";
 import Header from "./components/Header";
 import Products from "./components/Products";
@@ -35,9 +36,24 @@ function App() {
     }
 
     // Add To Cart
-    const addToCart = () => {
-      console.log("first")
+    let [cartItems,setCartItems] = useState ([])
+    const addToCart = (item) => {
+      const isExist = cartItems.find(cart => cart.id === item.id)
+      if (isExist) {
+        setCartItems(cartItem => cartItem.id === item.id ? item : cartItem)
+      } else {
+        setCartItems(prev => [...prev, item])
+      }
     }
+
+    // Remove From Cart
+    const removeFromCart = () => {
+      console.log(cartItems)
+    }
+
+    // Modal
+    const [modal, setModal] = useState(false)
+    
 
   // Categories Array
   const categories = products.map(product => product.category)
@@ -48,6 +64,8 @@ function App() {
       <Header 
         handleShowHide = {handleShowHide}
         liked = {liked}
+        cartItems = {cartItems}
+        setModal = {setModal}
       />
       <Products 
         products = {products}
@@ -59,6 +77,12 @@ function App() {
         multiFilter = {multiFilter} 
         categories = {categories}
       />
+      {
+        modal && <Cart
+          cartItems = {cartItems}
+          setModal = {setModal}
+        />
+      }
     </div>
   );
 }

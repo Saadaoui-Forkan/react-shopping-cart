@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 
-function Header({handleShowHide, liked}) {
+function Header({handleShowHide, liked, cartItems, setModal}) {
     const [rightNavbar, setRightNavbar] = useState('header-right')
     const toggleNavbar = () => {
         rightNavbar === "header-right" 
         ? setRightNavbar('header-right active-navbar') 
         : setRightNavbar('header-right')
     }
+
   return (
     <div className='header'>
         <div className="header-left">
@@ -23,15 +24,21 @@ function Header({handleShowHide, liked}) {
                     placeholder='Search a product ...' 
                 />
             </div>
-            <div className="cart">
+            <div className="cart" onClick={()=>setModal(true)}>
                 My Cart
-                <p className='my-cart'>5</p>
+                {
+                    cartItems.length > 0 && <p className="my-cart">
+                        {cartItems.length}
+                    </p>
+                }
             </div>
             <div className="favorites">
                 My Favorites
-                <p className={liked.length !== 0 && "favorites-products"}>
-                    {liked.length !== 0 && liked.length}
-                </p>
+                { 
+                    liked.length !== 0 && <p className="favorites-products">
+                        {liked.length}
+                    </p>
+                }
             </div>
         </div>
         <div className="burger" onClick={toggleNavbar}>
