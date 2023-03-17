@@ -3,7 +3,7 @@ import React from 'react'
 import Rating from './Rating'
 
 function ProductItem({item, toggleLike, liked, addToCart}) {
-  // console.log(cartItems)
+  
   return (
     <div className='box'>
         {

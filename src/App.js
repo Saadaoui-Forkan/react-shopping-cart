@@ -7,6 +7,7 @@ import Products from "./components/Products";
 function App() {
   const [products,setProducts] = useState([])
   const [liked,setLiked] = useState([])
+  const [modal, setModal] = useState(false)
 
   // fetch api
   const fetchProducts = async () => {
@@ -46,14 +47,11 @@ function App() {
       }
     }
 
-    // Remove From Cart
-    const removeFromCart = () => {
-      console.log(cartItems)
-    }
-
-    // Modal
-    const [modal, setModal] = useState(false)
-    
+  // Remove From Cart
+  const removeFromCart = (id) => {
+    const removed = cartItems.filter(item => item.id !== id)
+    setCartItems(removed)
+  }
 
   // Categories Array
   const categories = products.map(product => product.category)
@@ -81,6 +79,7 @@ function App() {
         modal && <Cart
           cartItems = {cartItems}
           setModal = {setModal}
+          removeFromCart = {removeFromCart}
         />
       }
     </div>
