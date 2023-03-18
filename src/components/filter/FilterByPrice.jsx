@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FilterByPrice() {
+function FilterByPrice({price, setPrice}) {
   return (
     <div className='filter-by-price'>
 
@@ -8,9 +8,11 @@ function FilterByPrice() {
       <input 
         type="range"
         step="50"
-        name="volume"
+        name="price"
         min="0" 
         max="1000"
+        value = {price}
+        onChange = {(e)=>setPrice(e.target.value)}
       />
 
     </div>

@@ -1,24 +1,40 @@
 import React from 'react'
 
-function FilterBySex() {
+function FilterBySex({setOption}) {
   return (
     <div className='filter-by-sex'>
       <h4 className='heading-title'>Gender</h4>
       <div className="gender">
-        <label>
+        <div className="form-group">
+            <input
+                onChange={(e) => setOption(e.target.value)}
+                value="all"
+                type="radio"
+                name="filter"
+                id="all"
+            />
+            <label htmlFor="all">All</label>
+          </div>
+          <div className="form-group">
+            <input
+              onChange={(e) => setOption(e.target.value)}
+              value="Men"
+              type="radio"
+              name="filter"
+              id="male"
+            />
+            <label htmlFor="male">Male</label>
+          </div>
+        <div className="form-group">
           <input
-            type="radio"
-            value="Male"
+              onChange={(e) => setOption(e.target.value)}
+              value="Women"
+              type="radio"
+              name="filter"
+              id="female"
           />
-          Male
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="Female"
-          />
-          Female
-        </label>
+          <label htmlFor="female">Female</label>
+        </div>
       </div>
     </div>
   )

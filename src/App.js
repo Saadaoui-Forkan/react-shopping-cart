@@ -57,6 +57,38 @@ function App() {
   const categories = products.map(product => product.category)
   .reduce((acc,item) => ((acc.includes(item)) ? acc : [...acc,item]),[])
 
+  // Filter By checkbox
+  const [selected, setSelected] = useState([]);
+  const handleCheck = (e) => {
+    const { value, checked } = e.target;
+    if (checked === true) {
+      setSelected((pre) => [...pre, value]);
+    } else {
+        setSelected((pre) => [...pre.filter((item) => item !== value)]);
+    }
+  }
+
+  // let checked = products.filter(item => selected.indexOf(item.category) !== -1)
+  // let filtered;
+  // checked.length === 0 ? filtered = products : filtered = checked 
+  const filterByCategory = (selected.length === 0) 
+                    ? products 
+                    : products.filter(item => selected.includes(item.category))
+
+  // Filter By Sex
+  const [option, setOption] = useState('all')
+  const filterBySex = filterByCategory.filter(
+    item => option === "Men" 
+    ? item.title.includes("Men") 
+    : option === "Women" 
+    ? item.category.includes("Women") 
+    : item)
+
+  // Filter By Price
+  const [price, setPrice] = useState(0)
+  const filterByPrice = filterBySex.filter(item => price === 0 ? item : item.price <= price)
+  // console.log(filterByPrice)
+
   return (
     <div className="App">
       <Header 
@@ -66,7 +98,7 @@ function App() {
         setModal = {setModal}
       />
       <Products 
-        products = {products}
+        products = {filterByPrice}
         toggleLike = {toggleLike}
         liked = {liked}
         addToCart = {addToCart}
@@ -74,6 +106,10 @@ function App() {
       <MultiFilter
         multiFilter = {multiFilter} 
         categories = {categories}
+        handleCheck = {handleCheck}
+        setOption = {setOption}
+        price = {price}
+        setPrice = {setPrice}
       />
       {
         modal && <Cart

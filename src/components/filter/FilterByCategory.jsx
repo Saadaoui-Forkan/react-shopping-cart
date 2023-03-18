@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FilterByCategory({categories}) {
+function FilterByCategory({categories, handleCheck}) {
   return (
     <div className='filter-by-category'>
       <h4 className='heading-title'>Categories</h4>
@@ -8,7 +8,11 @@ function FilterByCategory({categories}) {
         {
           categories.map(category => (
             <label key={category}>
-              <input type="checkbox" />
+              <input 
+                type="checkbox"
+                onChange={(e) => handleCheck(e)}
+                value = {category} 
+              />
               {category}
             </label>
           ))
