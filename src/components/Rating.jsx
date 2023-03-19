@@ -5,8 +5,10 @@ const Rating = ({rating}) => {
         {[...Array(5)].map((_, index) => {
         index += 1;
         return (
-            <span key={index} className={index <= Math.round(rating) ? "on" : "off"}>
-                <i className="fa-solid fa-star"></i>
+            <span 
+                key={index} 
+                className={index <= Math.round(rating) ? "on" : "off"}
+            > <i className="fa-solid fa-star"></i>
             </span>
         );
       })}

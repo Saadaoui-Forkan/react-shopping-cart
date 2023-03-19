@@ -67,7 +67,6 @@ function App() {
         setSelected((pre) => [...pre.filter((item) => item !== value)]);
     }
   }
-
   // let checked = products.filter(item => selected.indexOf(item.category) !== -1)
   // let filtered;
   // checked.length === 0 ? filtered = products : filtered = checked 
@@ -81,14 +80,21 @@ function App() {
     item => option === "Men" 
     ? item.title.includes("Men") 
     : option === "Women" 
-    ? item.category.includes("Women") 
+    ? item.title.includes("Women") 
     : item)
 
   // Filter By Price
   const [price, setPrice] = useState(0)
   const filterByPrice = filterBySex.filter(item => price === 0 ? item : item.price <= price)
-  // console.log(filterByPrice)
 
+  // Filter By Rate
+  const [rate, setRate] = useState(0)
+  const rates = filterByPrice.filter(item => rate === 0 ? item : Math.round(item.rating.rate) === rate)
+  
+  // Search A Product By Title
+  const [searched, setSearched] = useState("")
+  const filtered = rates.filter(item => searched.length === 0 ? item : item.title.toLowerCase().includes(searched.toLowerCase()))
+  
   return (
     <div className="App">
       <Header 
@@ -96,9 +102,11 @@ function App() {
         liked = {liked}
         cartItems = {cartItems}
         setModal = {setModal}
+        searched = {searched}
+        setSearched = {setSearched}
       />
       <Products 
-        products = {filterByPrice}
+        products = {filtered}
         toggleLike = {toggleLike}
         liked = {liked}
         addToCart = {addToCart}
@@ -110,6 +118,8 @@ function App() {
         setOption = {setOption}
         price = {price}
         setPrice = {setPrice}
+        rate = {rate}
+        setRate = {setRate}
       />
       {
         modal && <Cart

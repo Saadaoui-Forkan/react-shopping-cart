@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Header({handleShowHide, liked, cartItems, setModal}) {
+function Header({handleShowHide, liked, cartItems, setModal, searched, setSearched}) {
     const [rightNavbar, setRightNavbar] = useState('header-right')
     const toggleNavbar = () => {
         rightNavbar === "header-right" 
@@ -22,6 +22,8 @@ function Header({handleShowHide, liked, cartItems, setModal}) {
                     type="search" 
                     name="" 
                     placeholder='Search a product ...' 
+                    value = {searched}
+                    onChange = {(e)=>setSearched(e.target.value)}
                 />
             </div>
             <div className="cart" onClick={()=>setModal(true)}>

@@ -60,6 +60,14 @@ input[type="range"] {
 	background-color: #D35472;
 	color: #fff;
 }
+.rates label {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 2px;
+}
+input.rating-input {
+    display: none;
+}
 
 /* responsive */
 /* @media(max-width:991px) {

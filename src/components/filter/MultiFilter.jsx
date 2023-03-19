@@ -5,7 +5,8 @@ import FilterByRate from './FilterByRate'
 import FilterBySex from './FilterBySex'
 import './filter.css'
 
-function MultiFilter({multiFilter, categories, handleCheck, setOption, price, setPrice}) {
+function MultiFilter({multiFilter, 
+categories, handleCheck, setOption, price, setPrice, rate, setRate}) {
   
   return (
     <div className={multiFilter}>
@@ -20,7 +21,10 @@ function MultiFilter({multiFilter, categories, handleCheck, setOption, price, se
         price = {price}
         setPrice = {setPrice}
       />
-      <FilterByRate/>
+      <FilterByRate
+        rate = {rate}
+        setRate = {setRate}
+      />
       <button type='button' className='filter-btn'>Filter</button>
     </div>
   )
