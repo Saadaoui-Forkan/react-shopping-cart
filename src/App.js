@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Cart from "./components/Cart";
+import Cart from "./components/cart/Cart";
 import MultiFilter from "./components/filter/MultiFilter";
 import Header from "./components/Header";
-import Products from "./components/Products";
+import Products from "./components/products/Products";
 
 function App() {
   const [products,setProducts] = useState([])
@@ -15,6 +15,7 @@ function App() {
     const data = await response.json()
     setProducts(data)
   }
+  
   useEffect(()=> {
     fetchProducts()
   }, [])
