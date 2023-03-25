@@ -235,6 +235,27 @@ button.remove {
     text-align: center;
 }
 
+/* pagination */
+ul.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li.page-item {
+    padding: 5px;
+    border: 2px solid rgb(159, 40, 40);
+    margin: 5px;
+    cursor: pointer;
+    color: #fff;
+    background: rgb(159, 40, 40);
+}
+li.disabled {
+    cursor: not-allowed;
+}
+li.page-item.active {
+    background: #fff;
+    color: rgb(159, 40, 40);
+}
 /* responsive */
 @media(max-width:991px) {
 	.wrapper {

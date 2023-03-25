@@ -3,6 +3,7 @@ import Cart from "./components/cart/Cart";
 import MultiFilter from "./components/filter/MultiFilter";
 import Header from "./components/Header";
 import Products from "./components/products/Products";
+import ReactPaginate from 'react-paginate';
 
 function App() {
   const [products,setProducts] = useState([])
@@ -95,7 +96,16 @@ function App() {
   // Search A Product By Title
   const [searched, setSearched] = useState("")
   const filtered = rates.filter(item => searched.length === 0 ? item : item.title.toLowerCase().includes(searched.toLowerCase()))
-  
+
+  // Pagination
+  const [pageNumber, setPageNumber] = useState(0);
+  const productsPerPage = 4;
+  const pagesVisited = pageNumber * productsPerPage;
+  const displayProducts = filtered.slice(pagesVisited, pagesVisited + productsPerPage)
+  const pagesCount = Math.ceil(filtered.length / productsPerPage)
+  const handlePageClick = ({selected}) => {
+    setPageNumber(selected)
+}
   return (
     <div className="App">
       <Header 
@@ -107,7 +117,7 @@ function App() {
         setSearched = {setSearched}
       />
       <Products 
-        products = {filtered}
+        products = {displayProducts}
         toggleLike = {toggleLike}
         liked = {liked}
         addToCart = {addToCart}
@@ -129,6 +139,26 @@ function App() {
           removeFromCart = {removeFromCart}
         />
       }
+      <ReactPaginate
+        breakLabel = "..."
+        nextLabel = "next"
+        onPageChange = {handlePageClick}
+        pageRangeDisplayed = {5}
+        pageCount = {pagesCount}
+        previousLabel = "previous"
+        renderOnZeroPageCount = {null}
+        containerClassName = {'pagination'}
+        nextClassName = {'page-item'}
+        nextLinkClassName = {'page-link'}
+        previousClassName = {'page-item'}
+        previousLinkClassName = {'page-link'}
+        breakClassName = {'page-item'}
+        breakLinkClassName = {'page-link'}
+        pageClassName = {'page-item'}
+        pageLinkClassName = {'page-link'}
+        activeClassName = {'active'}
+
+    />
     </div>
   );
 }

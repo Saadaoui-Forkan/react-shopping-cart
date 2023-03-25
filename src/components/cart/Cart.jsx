@@ -26,7 +26,7 @@ function Cart({cartItems, setModal, removeFromCart}) {
     });
     const filteredCartItems = qtyArray.filter((item) => ids.indexOf(item.id) !== -1);
     setQtyArray(filteredCartItems);
-  }, [cartItems]);
+  }, [cartItems, qtyArray]);
   
   return (
     <div className='cart-modal'>
@@ -42,7 +42,7 @@ function Cart({cartItems, setModal, removeFromCart}) {
         ))
       }
       <div className="cart-summary">
-        <h2 className='cart-summary-title'>Total ---- {totalPrice.toFixed(3)} $</h2>
+        <h2 className='cart-summary-title'>Total:          {totalPrice.toFixed(3)} $</h2>
         <button type='button' onClick={()=>setModal(false)}>CLOSE</button>
       </div>  
     </div>
